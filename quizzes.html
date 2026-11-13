@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizzes | AI Literacy 101</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <a class="brand" href="index.html">AI Literacy 101 <span>Understanding AI</span></a>
+    <nav aria-label="Course navigation">
+      <a href="index.html">Home</a>
+      <a href="syllabus.html">Syllabus</a>
+      <a href="modules.html">Modules</a>
+      <a href="quizzes.html" class="active">Quizzes</a>
+      <a href="sources.html">Sources</a>
+      <a href="instructor.html">Instructor</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="page-header">
+      <div class="wrap">
+        <h1>Quizzes</h1>
+        <p>One quiz for each module. Pick a quiz, answer every question, and check your answers to see your score and an explanation for each one.</p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <!-- Tabs and questions are filled in by script.js -->
+      <div class="tabs" id="quiz-tabs" role="tablist" aria-label="Quizzes"></div>
+      <form class="card quiz" id="quiz-panel" role="tabpanel"></form>
+      <noscript>Please turn on JavaScript to take the quizzes.</noscript>
+    </div>
+
+    <footer>AI Literacy 101 &middot; English 2500 multimodal project</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
