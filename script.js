@@ -5,457 +5,288 @@
 const COURSE = [
   {
     title: "How LLMs Generate Answers",
-    goal: "Course goal: explain how LLMs generate their answers.",
+    goal: "Course Goal: explain how LLMs generate their answers",
     sections: [
       {
-        heading: "What is an LLM?",
-        paragraphs: [
-          "LLM stands for large language model. It is the kind of AI behind chatbots such as ChatGPT, Claude, and Gemini. An LLM is a computer program that has been trained on an enormous amount of written text so that it can produce new text that sounds natural."
+        heading: "What is a LLM?",
+        bullets: [
+          "A LLM, by definition, is a type of artificial intelligence program trained on a massive amount of text data to recognize, summarize, translate, and generate human-like language.",
+          "The term &ldquo;Artificial Intelligence&rdquo; was created by the computer scientist John McCarthy in the 1950&rsquo;s. In the late 50&rsquo;s there was a program that was created to learn and improve its chess playing capabilities.",
+          "It isn&rsquo;t its own brain. Artificial neural networks are loosely inspired by human anatomy but run statistical calculations on physical computer hardware."
         ]
       },
       {
-        heading: "Step 1: Your words become tokens",
-        paragraphs: [
-          "Before the model ever sees your question, your text is split into tokens. A token is a small chunk of text. It is often a whole word, but it can also be part of a word or a punctuation mark. A word like &ldquo;Generating&rdquo; may be a single token, while an unusual word may be split into several tokens (Joseph).",
-          "Each token is mapped to a number, and each number is mapped to a long list of values called an embedding. The embedding captures the meaning of the token and how it relates to other tokens. Tokens are the unit the model actually works with, which is why AI pricing and usage limits are measured in tokens and not in words (Joseph)."
+        heading: "Step 1: Your Words Are Generated",
+        bullets: [
+          "Your words are broken into tokens",
+          "Each of those tokens are assigned to maps and assigned a statistical number of importance. That importance value is how the AI figures out its relation and what the possible meaning of the data is"
         ]
       },
       {
-        heading: "Step 2: Predicting the next token",
-        paragraphs: [
-          "This step is the heart of the process. Given the tokens so far, the model calculates a probability for every possible next token in its vocabulary. For example, when continuing &ldquo;The capital of the Netherlands is,&rdquo; the model gives a very high probability to &ldquo;Amsterdam&rdquo; and tiny probabilities to thousands of other tokens (Joseph).",
-          "The model picks one token from those probabilities, adds it to the text, and then runs the whole calculation again with the new token included. Generating an answer is this loop repeated token by token until the model predicts a natural stopping point. In the article&rsquo;s words, &ldquo;The model never sees the finished answer in advance; it writes its way there one step at a time&rdquo; (Joseph).",
-          "A setting called temperature controls how adventurous each pick is. A low temperature almost always takes the most likely token, which gives consistent and predictable output. A higher temperature lets less likely tokens through, which gives more varied and creative output that is also more prone to errors. This is also why the same prompt can produce slightly different answers on different runs, unless the settings force the model to always take the top choice (Joseph)."
+        heading: "Step 2: Predicting the Next Token",
+        bullets: [
+          "Given each token, the model calculates a probability for every possible next token. For example if you were to ask a model &ldquo;What is the capitol of Iowa?&rdquo; It processes every token within the prompt and will assign probability to every possible answer, with the highest probability being the output &ldquo;Des Moines.&rdquo;"
         ]
       },
       {
-        heading: "Step 3: How the model learned to be helpful",
-        paragraphs: [
-          "Learning to predict the next token is called pretraining. Pretraining alone produces a model that can continue text, but not necessarily one that answers the way you want. A second stage of training addresses this (Joseph).",
-          "One part of that stage is instruction tuning: the model is trained on examples of questions paired with good answers, so it learns to respond helpfully instead of just continuing the text. Another part is reinforcement learning from human feedback (RLHF): people rate the model&rsquo;s responses, and the model is nudged toward the kinds of answers people prefer, which are clearer, safer, and more useful (Joseph).",
-          "After this stage the model still works by predicting the next token. It has simply learned that, after a question, the most plausible continuation is a helpful answer. As the article puts it, a model &ldquo;predicts plausible text rather than retrieving exact facts &mdash; which is why it is fluent, fast, and occasionally confidently wrong&rdquo; (Joseph)."
+        heading: "Step 3: How LLM&rsquo;s actually became helpful",
+        bullets: [
+          "LLM&rsquo;s have been trained on large amounts of data, being provided with examples of good questions and answers. The LLM then learns to answer questions with similar responses.",
+          "There is also reinforced learning from humans. Humans give their input as to whether or not a response was helpful or not. This allows the AI to curate its answer to users and make its responses clearer, safer, and more useful."
         ]
       }
     ],
     takeaways: [
-      "Your text is split into tokens, the small chunks a model actually works with.",
-      "An LLM writes an answer by predicting one token at a time, over and over.",
-      "Extra training taught the model to give helpful answers, but it still predicts plausible text and can be confidently wrong."
+      "LLM&rsquo;s process tokens and those tokens are used to predict answers which aren&rsquo;t always correct. Large data sets and human interaction helps train these models and can help create more accurate and useful answers."
     ],
     quiz: [
       {
-        q: "What is a token?",
+        q: "What is a LLM?",
         options: [
-          "A password needed to use AI",
-          "A fact the model looks up in a database",
-          "A rating a person gives to an AI answer",
-          "A small chunk of text, such as a word, part of a word, or a punctuation mark"
-        ],
-        answer: 3,
-        why: "Before the model sees your question, the text is split into tokens. A token is often a whole word, but it can also be part of a word or a punctuation mark."
-      },
-      {
-        q: "How does an LLM produce an answer?",
-        options: [
-          "It writes the whole answer at once and then checks it",
-          "It predicts one token, adds it to the text, and repeats until it reaches a natural stopping point",
-          "It searches for a finished answer and copies it",
-          "It asks a person to rate several answers and sends the best one"
-        ],
-        answer: 1,
-        why: "The model calculates a probability for every possible next token, picks one, adds it, and runs the calculation again. It never sees the finished answer in advance."
-      },
-      {
-        q: "What does a higher temperature setting do?",
-        options: [
-          "It lets less likely tokens through, making output more varied and creative but more prone to errors",
-          "It makes the model always pick the most likely token",
-          "It makes the model answer faster",
-          "It raises the price of each token"
-        ],
-        answer: 0,
-        why: "A low temperature gives consistent, predictable output. A higher temperature gives more varied and creative output that is also more error-prone."
-      },
-      {
-        q: "What happens in reinforcement learning from human feedback (RLHF)?",
-        options: [
-          "People type the answers for the model",
-          "The model's text is split into tokens",
-          "People rate the model's responses, and the model is nudged toward the kinds of answers people prefer",
-          "The model stops predicting the next token"
+          "A brain of its own that thinks the way a human does",
+          "A program that was created in the 1950's to play chess",
+          "A type of artificial intelligence program trained on a massive amount of text data to recognize, summarize, translate, and generate human-like language",
+          "A database that stores the correct answer to every question"
         ],
         answer: 2,
-        why: "RLHF nudges the model toward clearer, safer, and more useful answers. Afterward the model still works by predicting the next token."
+        why: "A LLM is a type of artificial intelligence program trained on a massive amount of text data. It isn&rsquo;t its own brain; it runs statistical calculations on physical computer hardware."
+      },
+      {
+        q: "Who created the term \"Artificial Intelligence\"?",
+        options: [
+          "The computer scientist John McCarthy, in the 1950's",
+          "The Pew Research Center",
+          "Google, when it released its AI overview",
+          "A chess playing program in the late 50's"
+        ],
+        answer: 0,
+        why: "The term was created by the computer scientist John McCarthy in the 1950&rsquo;s."
+      },
+      {
+        q: "What is the first thing that happens to your words when you send them to a LLM?",
+        options: [
+          "They are rated by a human as helpful or not helpful",
+          "They are broken into tokens",
+          "They are translated into another language",
+          "They are checked against a trusted source"
+        ],
+        answer: 1,
+        why: "Your words are broken into tokens, and each token is assigned a statistical number of importance that the AI uses to figure out its relation and possible meaning."
+      },
+      {
+        q: "You ask a model \"What is the capitol of Iowa?\" How does it arrive at \"Des Moines\"?",
+        options: [
+          "It looks the answer up in an atlas",
+          "It asks a human for the answer",
+          "It picks an answer at random",
+          "It assigns a probability to every possible answer and outputs the one with the highest probability"
+        ],
+        answer: 3,
+        why: "The model processes every token within the prompt and assigns a probability to every possible answer, with the highest probability being the output."
+      },
+      {
+        q: "How does reinforced learning from humans help a LLM?",
+        options: [
+          "Humans type out the answers for the model",
+          "Humans break the user's words into tokens",
+          "Humans give their input as to whether a response was helpful, which makes responses clearer, safer, and more useful",
+          "Humans guarantee that every answer is correct"
+        ],
+        answer: 2,
+        why: "Human input on whether a response was helpful allows the AI to curate its answers and make them clearer, safer, and more useful. The answers still aren&rsquo;t always correct."
       }
     ]
   },
   {
     title: "Recognizing Common Mistakes",
-    goal: "Course goal: recognize common mistakes.",
+    goal: "Course Goal: recognize common mistakes while using AI",
     sections: [
       {
         heading: "Over relying on AI",
-        paragraphs: [
-          "AI can feel like the go-to solution for any challenge: you are stuck on an assignment, you do not know how to start a paper, or you need help editing and revising. Leaning on it too often, however, can hurt you and your ability to think for yourself (Schleter).",
-          "Many people use AI for cognitive offloading, which means reducing mental effort by handing a task to a tool. Writing a grocery list instead of remembering it, setting an alarm so you do not forget a meeting, and using a GPS to get somewhere are all examples. This is helpful in daily life, but in educational settings AI and cognitive offloading can negatively affect critical thinking skills. Students who often turn to AI this way may be less likely to engage deeply with their coursework or build their own problem-solving abilities (Schleter).",
-          "The article&rsquo;s advice: &ldquo;Use AI in a way that supports critical thinking, not replaces it&rdquo; (Schleter)."
+        bullets: [
+          "Leaning on AI too much can hurt your ability to think. People often use AI as cognitive offloading, doing this too often can negatively affect critical thinking skills which are critical to develop while in school."
         ]
       },
       {
-        heading: "Weak prompting",
-        paragraphs: [
-          "The quality of what AI gives you depends on the quality of what you give it. A vague or overly simple prompt is likely to produce a vague or unhelpful response. The article sums this up as &ldquo;garbage in, garbage out&rdquo; (Schleter).",
-          "A strong prompt includes the intended audience for the output; what the output should look like, such as bullet points, an outline, or a paragraph; the tone or voice, such as formal, conversational, or persuasive; and any key points or requirements to include (Schleter).",
-          "Writing effective prompts is a skill that takes practice. Do not expect perfect results right away, and do not expect the tool to do your work for you (Schleter)."
+        heading: "Weak Prompting",
+        bullets: [
+          "The quality of your AI output depends on the description and complexity of the user's input. The more detail that you go into while prompting the AI helps you create a better and more concise output.",
+          "Strong prompts may include but are not limited to: Specific design choices, the intended audience, key details or features that need to be included, and any key requirements that need to be met.",
+          "The better that you are able to describe what you want, the better response that you will get. Learning how to prompt AI properly can seriously help you get the desired output, project design, or feature implementation."
         ]
       },
       {
-        heading: "A funny example: prescribing a rock per day",
-        paragraphs: [
-          "AI makes mistakes of its own, too. Google&rsquo;s AI Overviews search feature produced bizarre and misleading advice. It urged users to eat rocks, describing them as a vital source of minerals and vitamins. When asked about cheese sliding off pizza, it suggested mixing non-toxic glue into the sauce (Maliugina).",
-          "These hallucinations most likely came from the AI misreading jokes or content taken from forums and satirical sources (Maliugina)."
+        heading: "Funny Example of False Outputs",
+        bullets: [
+          "Google's AI overview provided factually incorrect information to a user urging that eating rocks are vital sources of minerals and vitamins.",
+          "New York City created an AI chatbot to help small businesses navigate the laws of the city. This chatbot advised a small restaurant to break the law. It stated that the restaurant could serve cheese that was eaten by a rodent that was in the kitchen. Obviously this is incorrect and the city's AI chatbot hallucinated and provided a completely wrong answer."
         ]
       },
       {
-        heading: "Spotting AI-generated content",
-        paragraphs: [
-          "Pew Research Center found that 76% of Americans say it is extremely important to be able to tell whether pictures, videos, or text were made by AI, yet 53% are not confident they can do it (Kennedy et al.). That worry is reasonable, because AI-generated content keeps getting harder to spot.",
-          "Clues that can help: text that is polished but vague or repetitive, quotes and sources you cannot find anywhere else, and images with odd hands, garbled lettering, or backgrounds that do not make sense. None of these clues is reliable on its own, and AI detector tools make mistakes too. The better habit is to ask where the content came from and whether a trusted source confirms it."
-        ]
-      },
-      {
-        heading: "A simple checking routine",
-        paragraphs: [
-          "Before you rely on an AI answer: (1) ask yourself how much it matters if the answer is wrong, (2) ask the AI where the information comes from, (3) confirm the key facts with a source you already trust, and (4) be extra careful with names, numbers, dates, quotes, and citations, since those are where made-up details show up most."
+        heading: "A Simple Checking Routine",
+        bullets: [
+          "Before you rely on an AI answer: (1) ask yourself how much it matter if the answer is wrong, (2) ask the AI where the information comes from, (3) confirm the key facts with a source you already trust, and (4) be extra careful with names, numbers, dates, quotes, and citations, since those are where made up details show up the most."
         ]
       }
     ],
     takeaways: [
-      "Use AI to support your critical thinking, not to replace it.",
-      "Vague prompts get vague answers: garbage in, garbage out.",
-      "AI can give confident advice that is flat-out wrong, so verify the facts that matter with a source you trust."
+      "Use AI to aid your academic progress, not hinder it",
+      "Be as precise as you possibly can so that you can get the most accurate response",
+      "Verify answers is critical because AI can confidently give you the wrong answers"
     ],
     quiz: [
       {
-        q: "What is cognitive offloading?",
+        q: "What can happen if you use AI for cognitive offloading too often?",
         options: [
-          "Turning an AI tool off to save energy",
-          "Reducing mental effort by handing a task to a tool",
-          "Memorizing information instead of writing it down",
-          "Checking an AI answer against a trusted source"
+          "The AI will stop answering your questions",
+          "It can negatively affect your critical thinking skills",
+          "Your prompts will automatically become stronger",
+          "The AI will become more accurate"
         ],
         answer: 1,
-        why: "Writing a grocery list or using a GPS are everyday examples. In educational settings, offloading to AI can negatively affect critical thinking skills."
+        why: "Leaning on AI too much can hurt your ability to think. Critical thinking skills are critical to develop while in school."
       },
       {
         q: "Which of these belongs in a strong prompt?",
         options: [
           "As few words as possible",
           "A promise to give the AI a good rating",
-          "The intended audience, the format, the tone, and any key points to include",
-          "A request to finish the whole assignment for you"
+          "A request for the AI to guess what you want",
+          "Specific design choices, the intended audience, key details or features, and any key requirements"
         ],
-        answer: 2,
-        why: "A vague prompt is likely to produce a vague response (&ldquo;garbage in, garbage out&rdquo;). Details about audience, format, tone, and requirements make a prompt stronger."
+        answer: 3,
+        why: "The better that you are able to describe what you want, the better response that you will get."
       },
       {
-        q: "Google's AI Overviews told users to eat rocks and to mix glue into pizza sauce. What most likely caused these mistakes?",
+        q: "What factually incorrect information did Google's AI overview give a user?",
         options: [
-          "The AI misread jokes or content from forums and satirical sources",
-          "Users typed their questions incorrectly",
-          "Doctors had recommended eating rocks",
-          "The AI was switched to a low temperature setting"
+          "That eating rocks are vital sources of minerals and vitamins",
+          "That Des Moines is not the capitol of Iowa",
+          "That a restaurant could ignore the laws of New York City",
+          "That AI never makes mistakes"
         ],
         answer: 0,
-        why: "The hallucinations most likely came from the AI misreading jokes or content taken from forums and satirical sources."
+        why: "Google's AI overview urged that eating rocks are vital sources of minerals and vitamins, which is factually incorrect."
       },
       {
-        q: "According to Pew Research Center, what share of Americans are not confident they can tell whether content is AI generated?",
-        options: ["5%", "26%", "76%", "53%"],
-        answer: 3,
-        why: "53% say they are not confident, even though 76% say the skill is extremely important."
+        q: "What did New York City's AI chatbot tell a small restaurant?",
+        options: [
+          "That it needed to close its kitchen",
+          "That it should stop using AI",
+          "That it could serve cheese that was eaten by a rodent that was in the kitchen",
+          "That it should add rocks to its menu"
+        ],
+        answer: 2,
+        why: "The chatbot was created to help small businesses navigate the laws of the city, but it hallucinated and advised the restaurant to break the law."
+      },
+      {
+        q: "According to the checking routine, which details deserve extra care because made up details show up there the most?",
+        options: [
+          "Greetings and sign-offs",
+          "Names, numbers, dates, quotes, and citations",
+          "Spelling and punctuation",
+          "The length of the answer"
+        ],
+        answer: 1,
+        why: "Step (4) of the routine is to be extra careful with names, numbers, dates, quotes, and citations."
       }
     ]
   },
   {
     title: "Realistic Concerns vs. Myths",
-    goal: "Course goal: separate realistic concerns about AI from the myths.",
+    goal: "Course Goal: separate realistic concerns from myths",
     sections: [
       {
-        heading: "Two extremes",
-        paragraphs: [
-          "People who do not understand AI tend to land on one of two sides: avoiding it out of fear, or trusting everything it produces. Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.). Some of that concern is well founded and some of it comes from myths. This module helps you sort one from the other."
+        heading: "Two Extremes",
+        bullets: [
+          "No matter the topic, people will take extreme positions and AI is not an exception. There are people that completely avoid AI out of fear and feel as if there are no benefits to it, while the other side swears by the tool and uses AI in every aspect of their life. The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.). Some of those concerns can be understandable while some stem from myths surrounding AI."
         ]
       },
       {
         heading: "Myth 1: &ldquo;AI is on the verge of automating all jobs.&rdquo;",
-        paragraphs: [
-          "Fact: AI tends to partially automate certain jobs instead of eliminating entire roles, and it is poised to shift the nature of human work. AI is most likely to automate specific tasks within a role, which lets workers move their time to the responsibilities AI cannot automate (&ldquo;AI: Facts and Myths&rdquo;).",
-          "AI is changing how work is done, but how far and how fast that change will go is actively debated. Even in the occupations with the greatest AI adoption, such as coding and customer service, experts are still debating the effects on employment. Earlier technological transitions created new occupations alongside the disruption, and new roles for building, managing, using, and overseeing AI have begun to emerge, but their scale, speed, and distribution remain open questions (&ldquo;AI: Facts and Myths&rdquo;).",
-          "Bottom line: the net effect of AI on jobs, and how those effects are distributed, is one of the most central questions in AI policy today (&ldquo;AI: Facts and Myths&rdquo;)."
+        bullets: [
+          "AI is starting to automate certain jobs rather than completely automating entire positions. Those jobs that are starting to be automated are low level jobs and their roles were already bound to change as we made technological changes.",
+          "AI is changing how work is done. It is allowing people to automate the simple tasks that are considered time wasters, now allocating more time to the task that AI can not complete.",
+          "With prior technological advances, jobs are bound to be disrupted as well as creating new occupations."
         ]
       },
       {
-        heading: "Myth 2: &ldquo;AI is inherently bias free, since computers are not biased.&rdquo;",
-        paragraphs: [
-          "Fact: AI can inherit and amplify the human biases present in its training data, its algorithmic assumptions, and the feedback used to refine it. If a system is trained on data that reflects historical inequities, such as biased hiring or credit approval decisions, it is likely to replicate those patterns in its output (&ldquo;AI: Facts and Myths&rdquo;).",
-          "If unaddressed, AI bias can perpetuate or worsen existing inequities and disproportionately harm vulnerable individuals and populations. Bias can be reduced through rigorous testing, better data quality, and a diversity of perspectives across design, evaluation, and deployment (&ldquo;AI: Facts and Myths&rdquo;)."
+        heading: "Myth 2: &ldquo;AI is inherently bias free, since computers are not biased&rdquo;",
+        bullets: [
+          "Since AI is being trained on data created by humans, it can inherit and amplify the biases that we have.",
+          "AI can be given a specific data set to be trained on and it can create a biased opinion on that data without having access to outside factors that could have potentially affected that data."
         ]
       },
       {
         heading: "Myth 3: &ldquo;AI can think creatively, almost better than humans.&rdquo;",
-        paragraphs: [
-          "Fact: AI &ldquo;creativity&rdquo; comes from advanced pattern recognition, which is fundamentally different from human consciousness. AI recognizes and recombines patterns from its vast training data. Its output does not come from an internal spark or a specific human purpose (&ldquo;AI: Facts and Myths&rdquo;).",
-          "When given clear instructions, AI today can often outperform humans in the speed and volume of &ldquo;good&rdquo; ideas it generates. True creativity, however, remains uniquely human. It draws on curiosity, personal history, embodied experience, and subjective feeling, which today&rsquo;s AI lacks (&ldquo;AI: Facts and Myths&rdquo;)."
+        bullets: [
+          "AI&rsquo;s &ldquo;creativity&rdquo; is just a by-product of its advanced pattern recognition which is completely different from a human's natural creativity.",
+          "AI creativity comes from its vast amount of training data, allowing it to pick up on common patterns but it doesn&rsquo;t have its own spark of creativity.",
+          "When prompted with clear creative goals it can often create &ldquo;creative&rdquo; ideas quicker than humans can but because those ideas were generated quickly doesn&rsquo;t mean that they are good.",
+          "Creativity will also be a uniquely human trait and that will never go away."
         ]
       },
       {
-        heading: "Myth 4: &ldquo;AI doesn&rsquo;t need human oversight to operate.&rdquo;",
-        paragraphs: [
-          "Fact: human oversight is essential to building and deploying AI responsibly, from system design through real-world monitoring. Humans curate the training data, design policies and intentions, monitor operations for errors and risks, and manage deployment, adoption, and oversight. Developing and managing AI fairly and safely requires active human involvement at every critical stage (&ldquo;AI: Facts and Myths&rdquo;).",
-          "Agentic AI systems that can carry out complex multi-step tasks on their own are now emerging. As they do, direct human intervention may become more limited, which may make proactive oversight and clear human controls even more critical to prevent unintended outcomes (&ldquo;AI: Facts and Myths&rdquo;)."
-        ]
-      },
-      {
-        heading: "Myth 5: &ldquo;AI can predict the future with certainty.&rdquo;",
-        paragraphs: [
-          "Fact: AI is a powerful tool for forecasting and simulating scenarios, but it remains an imperfect and uncertain probabilistic system. AI can run and analyze millions of &ldquo;what-if&rdquo; scenarios at a rate far beyond what humans can do alone. Despite that speed, it is less reliable at anticipating &ldquo;black swan&rdquo; events or structural shifts that fall outside the patterns in its historical data (&ldquo;AI: Facts and Myths&rdquo;).",
-          "Predictive capabilities are improving fast, but human intervention and judgment remain essential in high-stakes contexts, where a false sense of certainty from AI could have real-world impacts (&ldquo;AI: Facts and Myths&rdquo;)."
-        ]
-      },
-      {
-        heading: "How to judge a claim about AI",
-        paragraphs: [
-          "When you see a dramatic claim about AI, ask three questions. Who is making the claim, and do they benefit from fear or hype? What evidence do they give? Is the claim about what AI does today, or a guess about the future?"
+        heading: "Myth 4: &ldquo;AI doesn&rsquo;t need human oversight to operate&rdquo;",
+        bullets: [
+          "Human oversight is necessary to build and deploy AI created software and real world monitoring",
+          "Humans are responsible for creating the data that it trains on, the design, monitoring errors, and managing the adoption/deployment of AI systems.",
+          "Ensuring AI is developed and managed properly will be a human task for many years to come. This ranges from the data that it trains on to how AI is deployed for others to use.",
+          "Humans also have to be able to double check the outputs that it is given as shown in module 2 where AI can give completely wrong and sometimes harmful answers."
         ]
       }
     ],
-    takeaways: [
-      "Fear and blind trust both come from not understanding AI.",
-      "AI changes tasks within jobs, can inherit human bias, and recombines patterns instead of creating the way people do.",
-      "AI still needs human oversight, and its predictions are never certain.",
-      "Judge AI claims by their source and their evidence."
-    ],
+    takeaways: [],
     quiz: [
       {
-        q: "\"AI is on the verge of automating all jobs.\" What does the Bipartisan Policy Center say is more accurate?",
+        q: "According to the Pew Research Center, what share of Americans are more concerned than excited about the growing use of AI?",
+        options: ["5%", "25%", "50%", "95%"],
+        answer: 2,
+        why: "The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.)."
+      },
+      {
+        q: "\"AI is on the verge of automating all jobs.\" What is more accurate?",
         options: [
-          "AI will have no effect on how people work",
-          "AI is most likely to automate specific tasks within a role, not eliminate entire roles",
-          "AI has already replaced all coding and customer service jobs",
-          "Experts agree on exactly how many jobs AI will eliminate"
+          "AI will have no effect on how work is done",
+          "AI is starting to automate certain jobs and simple tasks rather than completely automating entire positions",
+          "AI has already automated every job",
+          "Technological advances have never disrupted jobs before"
         ],
         answer: 1,
-        why: "AI tends to partially automate certain jobs and shift the nature of work. The extent and pace of that change are still actively debated."
+        why: "AI is changing how work is done by automating the simple tasks, which allocates more time to the task that AI can not complete. Technological advances disrupt jobs as well as creating new occupations."
       },
       {
         q: "\"AI is inherently bias free, since computers are not biased.\" This statement is:",
         options: [
           "True, because computers cannot be biased",
-          "True, but only for systems used in hiring",
-          "A myth, because bias in AI can never be reduced",
-          "A myth, because AI can inherit and amplify human biases in its training data"
+          "True, as long as the AI is given a specific data set",
+          "A myth, because AI refuses to use data created by humans",
+          "A myth, because AI is trained on data created by humans and can inherit and amplify our biases"
         ],
         answer: 3,
-        why: "A system trained on data reflecting historical inequities is likely to replicate those patterns. Bias can be reduced through rigorous testing, better data quality, and a diversity of perspectives."
+        why: "Since AI is being trained on data created by humans, it can inherit and amplify the biases that we have."
       },
       {
         q: "Where does AI \"creativity\" come from?",
         options: [
-          "Recognizing and recombining patterns from its training data",
-          "Curiosity and personal history",
-          "Embodied experience and subjective feeling",
-          "An internal spark of consciousness"
+          "Advanced pattern recognition across its vast amount of training data",
+          "Its own spark of creativity",
+          "A human's natural creativity",
+          "The speed at which it generates ideas"
         ],
         answer: 0,
-        why: "AI can often beat humans on the speed and volume of ideas, but curiosity, personal history, embodied experience, and subjective feeling remain uniquely human."
+        why: "AI&rsquo;s &ldquo;creativity&rdquo; is a by-product of its advanced pattern recognition. It can create ideas quickly, but that doesn&rsquo;t mean that they are good."
       },
       {
-        q: "As agentic AI systems begin carrying out multi-step tasks on their own, what happens to the need for human oversight?",
+        q: "\"AI doesn't need human oversight to operate.\" Which of these are humans actually responsible for?",
         options: [
-          "It disappears, because the systems run themselves",
-          "It only matters while the training data is being chosen",
-          "Proactive oversight and clear human controls may become even more critical",
-          "It becomes the job of the AI system"
+          "Nothing, because AI systems manage themselves",
+          "Only double checking spelling",
+          "Creating the data that it trains on, the design, monitoring errors, and managing the adoption/deployment of AI systems",
+          "Only turning the AI on and off"
         ],
         answer: 2,
-        why: "Human involvement is needed at every critical stage. With agentic AI, direct intervention may be more limited, so proactive oversight may matter even more."
-      },
-      {
-        q: "Why can't AI predict the future with certainty?",
-        options: [
-          "It can only analyze one scenario at a time",
-          "It is a probabilistic system that is less reliable for events outside the patterns in its historical data",
-          "It refuses to make forecasts",
-          "Its predictive capabilities are getting worse"
-        ],
-        answer: 1,
-        why: "AI can analyze millions of what-if scenarios, but it remains imperfect and uncertain, especially for &ldquo;black swan&rdquo; events. Human judgment stays essential when the stakes are high."
-      }
-    ]
-  },
-  {
-    title: "Using AI Responsibly at Work and School",
-    goal: "Course goal: use AI responsibly in your line of profession or academia.",
-    sections: [
-      {
-        heading: "Know the rules first",
-        paragraphs: [
-          "Rules about AI are different in every classroom and workplace. One instructor may welcome AI for brainstorming while another bans it entirely. Check the syllabus or company policy before you start, and ask when it is unclear. \"I didn't know\" rarely works as a defense."
-        ]
-      },
-      {
-        heading: "Protect private information",
-        paragraphs: [
-          "Treat a public AI tool like a public space. Do not paste in passwords, medical or financial details, other people's personal information, or confidential work documents unless your school or employer has approved that tool for that purpose."
-        ]
-      },
-      {
-        heading: "Be honest about your use",
-        paragraphs: [
-          "If AI helped with your work, say so in the way your instructor or employer expects. Style guides such as MLA and APA now include formats for citing AI tools. Turning in AI-written work as entirely your own is a form of academic dishonesty in most classes."
-        ]
-      },
-      {
-        heading: "You are still responsible",
-        paragraphs: [
-          "Whatever you submit has your name on it. If an AI-written section contains an error, a made-up source, or copied wording, the consequences fall on you. Read, check, and revise everything before it leaves your hands.",
-          "A good rule: use AI to support your thinking, such as brainstorming, outlining, getting feedback, or having a hard concept explained. Do not use it to skip the thinking the assignment or job is asking of you."
-        ]
-      }
-    ],
-    takeaways: [
-      "Check the AI policy for each class or job.",
-      "Keep private and confidential information out of public AI tools.",
-      "Disclose AI help, and verify everything you submit."
-    ],
-    quiz: [
-      {
-        q: "What should you do first before using AI on a class assignment?",
-        options: [
-          "Check the instructor's or school's policy on AI use",
-          "Ask the AI whether it is allowed",
-          "Use it and mention it only if asked",
-          "Assume the rules are the same as in your other classes"
-        ],
-        answer: 0,
-        why: "AI rules differ from class to class, so check the policy that applies to this assignment."
-      },
-      {
-        q: "Which of these is the safest thing to paste into a public AI chatbot?",
-        options: [
-          "A coworker's home address and phone number",
-          "Your bank login details",
-          "A confidential company report",
-          "A general question about how photosynthesis works"
-        ],
-        answer: 3,
-        why: "General questions carry no private information. Personal, financial, and confidential material should stay out."
-      },
-      {
-        q: "An AI-written paragraph in your report includes a made-up statistic. Who is responsible?",
-        options: [
-          "The AI company",
-          "You, because you submitted the work",
-          "No one, because it was an honest mistake",
-          "Your instructor or manager"
-        ],
-        answer: 1,
-        why: "Anything you turn in is your responsibility, which is why checking AI output matters."
-      },
-      {
-        q: "Which is the best example of using AI to support your own thinking?",
-        options: [
-          "Having AI write your essay and submitting it unchanged",
-          "Using AI to answer take-home exam questions",
-          "Asking AI to explain a confusing concept, then writing the assignment yourself",
-          "Having AI rewrite a classmate's paper so it looks like yours"
-        ],
-        answer: 2,
-        why: "Using AI to understand something, then doing the work yourself, keeps the learning and the work your own."
-      }
-    ]
-  },
-  {
-    title: "Deciding When to Use AI",
-    goal: "Course goal: make informed decisions about when to use AI.",
-    sections: [
-      {
-        heading: "Three questions to ask",
-        paragraphs: [
-          "1. What happens if the answer is wrong? A weak idea for a birthday party costs nothing. A wrong medication dose or legal deadline can cause real harm. The higher the stakes, the more you need a qualified person or an official source.",
-          "2. Can I check the result? AI is most useful when you can easily tell whether the output is good, either because you know the subject or because you can verify it.",
-          "3. Am I supposed to be learning this? If the point of a task is to build a skill, letting AI do it means the skill never gets built."
-        ]
-      },
-      {
-        heading: "Where AI tends to help",
-        paragraphs: [
-          "Brainstorming ideas, summarizing long material you can spot-check, explaining a concept in simpler words, drafting and editing routine writing, practicing for a test or interview, and getting unstuck on a problem you will finish yourself."
-        ]
-      },
-      {
-        heading: "Where to be careful",
-        paragraphs: [
-          "Medical, legal, and financial decisions; anything involving private information; facts you have no way to verify; and personal messages where people expect your own words. AI can still help you prepare questions for a doctor, lawyer, or advisor, but the decision should rest on expert advice."
-        ]
-      },
-      {
-        heading: "Your decision",
-        paragraphs: [
-          "Being AI literate does not mean using AI for everything, and it does not mean refusing to use it. It means you understand the tool well enough to decide for yourself, case by case, based on knowledge instead of fear or hype."
-        ]
-      }
-    ],
-    takeaways: [
-      "Weigh the stakes, your ability to check the result, and whether you need to learn the skill.",
-      "AI fits best on low-stakes tasks you can verify.",
-      "The informed choice is yours to make."
-    ],
-    quiz: [
-      {
-        q: "Which task is the best fit for AI?",
-        options: [
-          "Deciding how much of a prescription medicine to take",
-          "Brainstorming title ideas for a presentation",
-          "Getting a final answer on a legal dispute",
-          "Writing the essay your class assigned to practice writing"
-        ],
-        answer: 1,
-        why: "Brainstorming is low stakes and you can easily judge the results yourself."
-      },
-      {
-        q: "Why does it matter whether you can check an AI's output?",
-        options: [
-          "Checking makes the AI faster",
-          "AI only works when someone is watching",
-          "AI can be wrong, so you need a way to catch errors",
-          "It does not matter as long as the answer is long"
-        ],
-        answer: 2,
-        why: "Since AI can make confident mistakes, it is most useful when you can verify what it gives you."
-      },
-      {
-        q: "The purpose of an assignment is to learn how to solve a type of math problem. What is the main risk of having AI solve it?",
-        options: [
-          "You will not build the skill the assignment is meant to teach",
-          "The AI will become worse at math",
-          "The problem will take longer",
-          "There is no risk"
-        ],
-        answer: 0,
-        why: "When the goal is learning, skipping the work means skipping the learning."
-      },
-      {
-        q: "According to this course, what does being AI literate mean?",
-        options: [
-          "Using AI for every task",
-          "Never using AI",
-          "Knowing how to code an AI model",
-          "Understanding AI well enough to make your own informed decisions"
-        ],
-        answer: 3,
-        why: "The goal is informed choice, made from understanding instead of fear or hype."
+        why: "Human oversight is necessary, and humans also have to double check outputs, since Module 2 showed AI can give completely wrong and sometimes harmful answers."
       }
     ]
   }
@@ -527,21 +358,24 @@ function showModule(index) {
 
   buildTabs(tabs, "module", "Module", index, showModule);
 
-  let html = "<h2>Module " + number + ": " + module.title + "</h2>";
+  let html = "<h2>Module " + number + "</h2>";
   html += '<p class="goal">' + module.goal + "</p>";
 
   module.sections.forEach(function (section) {
-    html += "<h3>" + section.heading + "</h3>";
-    section.paragraphs.forEach(function (text) {
-      html += "<p>" + text + "</p>";
+    html += "<h3>" + section.heading + "</h3><ul>";
+    section.bullets.forEach(function (text) {
+      html += "<li>" + text + "</li>";
     });
+    html += "</ul>";
   });
 
-  html += '<div class="takeaways"><h3>Key takeaways</h3><ul>';
-  module.takeaways.forEach(function (item) {
-    html += "<li>" + item + "</li>";
-  });
-  html += "</ul></div>";
+  if (module.takeaways.length) {
+    html += '<div class="takeaways"><h3>Key Take Aways</h3><ul>';
+    module.takeaways.forEach(function (item) {
+      html += "<li>" + item + "</li>";
+    });
+    html += "</ul></div>";
+  }
 
   html += '<div class="module-nav">';
   html += '<a class="button" href="quizzes.html#quiz-' + number + '">Take Quiz ' + number + "</a>";
@@ -658,6 +492,89 @@ function gradeQuiz(index) {
   buildTabs(document.getElementById("quiz-tabs"), "quiz", "Quiz", index, showQuiz);
 }
 
+// ---------- Grades page ----------
+
+// Standard college plus/minus scale: the lowest percent that earns each letter.
+const GRADE_SCALE = [
+  [93, "A"], [90, "A-"],
+  [87, "B+"], [83, "B"], [80, "B-"],
+  [77, "C+"], [73, "C"], [70, "C-"],
+  [67, "D+"], [63, "D"], [60, "D-"],
+  [0, "F"]
+];
+
+function letterGrade(percent) {
+  return GRADE_SCALE.find(function (row) {
+    return percent >= row[0];
+  })[1];
+}
+
+function showGrades() {
+  const panel = document.getElementById("grades-panel");
+  const scores = loadScores();
+  let earned = 0;
+  let possible = 0;
+  let taken = 0;
+  let rows = "";
+
+  COURSE.forEach(function (module, index) {
+    const number = index + 1;
+    const total = module.quiz.length;
+    const link = '<a href="quizzes.html#quiz-' + number + '">Quiz ' + number + "</a>: " + module.title;
+
+    if (typeof scores[index] !== "number") {
+      rows += "<tr><td>" + link + '</td><td class="pending">Not taken</td><td>&ndash;</td><td>&ndash;</td></tr>';
+      return;
+    }
+
+    const score = Math.min(scores[index], total);
+    const percent = Math.round((score / total) * 100);
+    earned += score;
+    possible += total;
+    taken += 1;
+    rows += "<tr><td>" + link + "</td><td>" + score + " / " + total + "</td><td>" + percent + "%</td><td><strong>" + letterGrade(percent) + "</strong></td></tr>";
+  });
+
+  let html = '<div class="grade-summary">';
+  if (taken === 0) {
+    html += '<span class="grade-letter">&ndash;</span>';
+    html += "<div><h2>No grade yet</h2><p>Take a quiz and your grade will show up here.</p></div>";
+  } else {
+    const overall = Math.round((earned / possible) * 100);
+    html += '<span class="grade-letter">' + letterGrade(overall) + "</span>";
+    html += "<div><h2>Course grade: " + overall + "%</h2>";
+    html += "<p>" + earned + " of " + possible + " points, based on " + taken + " of " + COURSE.length + " quizzes taken.</p></div>";
+  }
+  html += "</div>";
+
+  html += '<table class="grade-table"><thead><tr><th>Quiz</th><th>Best score</th><th>Percent</th><th>Grade</th></tr></thead>';
+  html += "<tbody>" + rows + "</tbody></table>";
+
+  if (taken > 0) {
+    html += '<button type="button" class="button secondary" id="reset-grades">Reset grades</button>';
+  }
+
+  panel.innerHTML = html;
+
+  const reset = document.getElementById("reset-grades");
+  if (reset) {
+    reset.addEventListener("click", function () {
+      if (reset.dataset.armed) {
+        try {
+          localStorage.removeItem("aiLiteracyScores");
+        } catch (error) {
+          // Storage is unavailable; there is nothing to clear.
+        }
+        showGrades();
+      } else {
+        // Ask for a second click before erasing anything.
+        reset.dataset.armed = "1";
+        reset.textContent = "Click again to erase all quiz scores";
+      }
+    });
+  }
+}
+
 // ---------- Page-flip animation for the sidebar tabs ----------
 
 // The file name of a page, e.g. "syllabus.html" ("" or "/" counts as the home page).
@@ -719,6 +636,10 @@ if (document.getElementById("module-panel")) {
   window.addEventListener("hashchange", function () {
     showModule(indexFromHash("module"));
   });
+}
+
+if (document.getElementById("grades-panel")) {
+  showGrades();
 }
 
 if (document.getElementById("quiz-panel")) {

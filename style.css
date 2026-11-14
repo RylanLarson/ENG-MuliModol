@@ -560,6 +560,16 @@ body.turning .content {
   max-width: 70ch;
 }
 
+.module ul {
+  margin: 0 0 12px;
+  padding-left: 22px;
+  max-width: 70ch;
+}
+
+.module li {
+  margin-bottom: 8px;
+}
+
 .takeaways {
   background: var(--blue-soft);
   border-radius: 10px;
@@ -664,6 +674,80 @@ body.turning .content {
   gap: 14px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
+}
+
+/* Grades page */
+.grade-summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.grade-summary h2 {
+  margin: 0 0 4px;
+}
+
+.grade-summary p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.grade-letter {
+  flex: none;
+  min-width: 84px;
+  padding: 14px 10px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.grade-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.grade-table th,
+.grade-table td {
+  text-align: left;
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.grade-table th {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.grade-table .pending {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.grade-scale {
+  margin-top: 20px;
+}
+
+.grade-scale ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 6px 16px;
+}
+
+.grade-scale strong {
+  display: inline-block;
+  min-width: 26px;
+  color: var(--navy);
 }
 
 .score {
