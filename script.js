@@ -41,59 +41,59 @@ const COURSE = [
     ],
     quiz: [
       {
-        q: "What is a LLM?",
+        q: "What is a Large Language Model?",
         options: [
-          "A brain of its own that thinks the way a human does",
-          "A program that was created in the 1950's to play chess",
-          "A type of artificial intelligence program trained on a massive amount of text data to recognize, summarize, translate, and generate human-like language",
-          "A database that stores the correct answer to every question"
-        ],
-        answer: 2,
-        why: "A LLM is a type of artificial intelligence program trained on a massive amount of text data. It isn&rsquo;t its own brain; it runs statistical calculations on physical computer hardware."
-      },
-      {
-        q: "Who created the term \"Artificial Intelligence\"?",
-        options: [
-          "The computer scientist John McCarthy, in the 1950's",
-          "The Pew Research Center",
-          "Google, when it released its AI overview",
-          "A chess playing program in the late 50's"
-        ],
-        answer: 0,
-        why: "The term was created by the computer scientist John McCarthy in the 1950&rsquo;s."
-      },
-      {
-        q: "What is the first thing that happens to your words when you send them to a LLM?",
-        options: [
-          "They are rated by a human as helpful or not helpful",
-          "They are broken into tokens",
-          "They are translated into another language",
-          "They are checked against a trusted source"
+          "A database that looks up that correct answer for each question the user asks",
+          "A program trained on large amounts of data to recognize, summarize, and generate human like text",
+          "A program that is designed and functions like a human brain to think about and respond with the correct answers",
+          "A new state of the art search engine that looks up the correct answer on the internet"
         ],
         answer: 1,
-        why: "Your words are broken into tokens, and each token is assigned a statistical number of importance that the AI uses to figure out its relation and possible meaning."
+        why: "A LLM is a type of artificial intelligence program trained on a massive amount of text data to recognize, summarize, translate, and generate human-like language."
       },
       {
-        q: "You ask a model \"What is the capitol of Iowa?\" How does it arrive at \"Des Moines\"?",
+        q: "Which statement about AI and the human brain are correct?",
         options: [
-          "It looks the answer up in an atlas",
-          "It asks a human for the answer",
-          "It picks an answer at random",
-          "It assigns a probability to every possible answer and outputs the one with the highest probability"
+          "It has its own brain just like ours and it thinks for itself",
+          "AI neural networks are designed exactly like human brains",
+          "AI neural networks are loosely designed around the human brain but use statistical calculations on physical computer hardware",
+          "AI and the human brain have absolutely nothing to do with each other"
+        ],
+        answer: 2,
+        why: "It isn’t its own brain. Artificial neural networks are loosely inspired by human anatomy but run statistical calculations on physical computer hardware."
+      },
+      {
+        q: "What happens to your words before the model works with them?",
+        options: [
+          "They are broken up into what is called tokens",
+          "They are translated to computer language",
+          "They are used to search the internet",
+          "They are saved as an answer to a different question"
+        ],
+        answer: 0,
+        why: "Your words are broken into tokens, and each token is assigned a statistical number of importance."
+      },
+      {
+        q: "You ask an LLM, “What is the capitol of Iowa?” Why does it answer “Des Moines”?",
+        options: [
+          "It looked at a map to figure out the correct answer",
+          "It used google to figure it out",
+          "It used the tokens that it generated to pay for an answer",
+          "“Des Moines” had the highest probability of every possible token"
         ],
         answer: 3,
         why: "The model processes every token within the prompt and assigns a probability to every possible answer, with the highest probability being the output."
       },
       {
-        q: "How does reinforced learning from humans help a LLM?",
+        q: "How does learning from human feedback make an LLM more helpful?",
         options: [
-          "Humans type out the answers for the model",
-          "Humans break the user's words into tokens",
-          "Humans give their input as to whether a response was helpful, which makes responses clearer, safer, and more useful",
-          "Humans guarantee that every answer is correct"
+          "Humans delete the wrong answers that it gives so that it never provides that same answer again",
+          "Humans rate how helpful a response was so that the model can provide more answers like it",
+          "It lets the model stop predicting tokens",
+          "So it doesn’t look that question up on the internet again"
         ],
-        answer: 2,
-        why: "Human input on whether a response was helpful allows the AI to curate its answers and make them clearer, safer, and more useful. The answers still aren&rsquo;t always correct."
+        answer: 1,
+        why: "Humans give their input as to whether or not a response was helpful, which makes the AI’s responses clearer, safer, and more useful."
       }
     ]
   },
@@ -136,59 +136,59 @@ const COURSE = [
     ],
     quiz: [
       {
-        q: "What can happen if you use AI for cognitive offloading too often?",
+        q: "What is the main risk of using AI for cognitive offloading?",
         options: [
-          "The AI will stop answering your questions",
-          "It can negatively affect your critical thinking skills",
-          "Your prompts will automatically become stronger",
-          "The AI will become more accurate"
-        ],
-        answer: 1,
-        why: "Leaning on AI too much can hurt your ability to think. Critical thinking skills are critical to develop while in school."
-      },
-      {
-        q: "Which of these belongs in a strong prompt?",
-        options: [
-          "As few words as possible",
-          "A promise to give the AI a good rating",
-          "A request for the AI to guess what you want",
-          "Specific design choices, the intended audience, key details or features, and any key requirements"
-        ],
-        answer: 3,
-        why: "The better that you are able to describe what you want, the better response that you will get."
-      },
-      {
-        q: "What factually incorrect information did Google's AI overview give a user?",
-        options: [
-          "That eating rocks are vital sources of minerals and vitamins",
-          "That Des Moines is not the capitol of Iowa",
-          "That a restaurant could ignore the laws of New York City",
-          "That AI never makes mistakes"
-        ],
-        answer: 0,
-        why: "Google's AI overview urged that eating rocks are vital sources of minerals and vitamins, which is factually incorrect."
-      },
-      {
-        q: "What did New York City's AI chatbot tell a small restaurant?",
-        options: [
-          "That it needed to close its kitchen",
-          "That it should stop using AI",
-          "That it could serve cheese that was eaten by a rodent that was in the kitchen",
-          "That it should add rocks to its menu"
+          "nothing",
+          "A better overall course grade",
+          "Weakened critical thinking skills",
+          "It makes AI slower"
         ],
         answer: 2,
-        why: "The chatbot was created to help small businesses navigate the laws of the city, but it hallucinated and advised the restaurant to break the law."
+        why: "Using AI as cognitive offloading too often can negatively affect critical thinking skills, which are critical to develop while in school."
       },
       {
-        q: "According to the checking routine, which details deserve extra care because made up details show up there the most?",
+        q: "Which prompt will give the best output?",
         options: [
-          "Greetings and sign-offs",
-          "Names, numbers, dates, quotes, and citations",
-          "Spelling and punctuation",
-          "The length of the answer"
+          "Create me a personal website that displays all of my positive attributes and make no mistakes",
+          "Make a picture of a dog",
+          "Write a 2 paragraph article for first time pet owners in a polite manner that tells them the basics of feeding, exercising, and socializing them",
+          "Make a cool looking document that includes everything that I need to know about software engineering"
         ],
-        answer: 1,
-        why: "Step (4) of the routine is to be extra careful with names, numbers, dates, quotes, and citations."
+        answer: 2,
+        why: "This prompt names the intended audience, the key details that need to be included, and the requirements that need to be met. The better that you are able to describe what you want, the better response that you will get."
+      },
+      {
+        q: "What did New York City’s chatbot get wrong?",
+        options: [
+          "They should be providing their customers with rocks because of their important minerals",
+          "They should not file taxes so that they can save money",
+          "Fire all of their employees to keep their small business small",
+          "It is acceptable to sell cheese that was eaten by a rodent"
+        ],
+        answer: 3,
+        why: "The city’s AI chatbot hallucinated and stated that a restaurant could serve cheese that was eaten by a rodent that was in the kitchen."
+      },
+      {
+        q: "Which details deserve the most attention in an AI answer?",
+        options: [
+          "Grammar",
+          "Spelling",
+          "Names, numbers, dates, quotes, and data",
+          "The specific font that the AI gives to you"
+        ],
+        answer: 2,
+        why: "Be extra careful with names, numbers, dates, quotes, and citations, since those are where made up details show up the most."
+      },
+      {
+        q: "What should you do before relying on AI’s answers?",
+        options: [
+          "Ask yourself how much it matters if the answer is wrong",
+          "Refer a friend to make sure the answer is correct",
+          "Ask AI to make it longer",
+          "Ask AI if it made any mistakes"
+        ],
+        answer: 0,
+        why: "This is step (1) of the checking routine, followed by asking the AI where the information comes from and confirming the key facts with a source you already trust."
       }
     ]
   },
@@ -239,54 +239,59 @@ const COURSE = [
     takeaways: [],
     quiz: [
       {
-        q: "According to the Pew Research Center, what share of Americans are more concerned than excited about the growing use of AI?",
-        options: ["5%", "25%", "50%", "95%"],
+        q: "What does Pew Research Center’s data show about Americans feelings towards AI?",
+        options: [
+          "nothing",
+          "90% of Americans are excited",
+          "Half of Americans are more concerned than excited",
+          "Everyone uses AI in their daily life"
+        ],
         answer: 2,
         why: "The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.)."
       },
       {
-        q: "\"AI is on the verge of automating all jobs.\" What is more accurate?",
+        q: "“AI is on the verge of automating all jobs.” What is a more accurate statement?",
         options: [
-          "AI will have no effect on how work is done",
-          "AI is starting to automate certain jobs and simple tasks rather than completely automating entire positions",
-          "AI has already automated every job",
-          "Technological advances have never disrupted jobs before"
+          "AI is automating simple tasks, freeing people to do what is more important",
+          "It hasn’t affected anyone's jobs yet",
+          "This statement is correct",
+          "AI is only creating new jobs and not disrupting already existing jobs"
         ],
-        answer: 1,
-        why: "AI is changing how work is done by automating the simple tasks, which allocates more time to the task that AI can not complete. Technological advances disrupt jobs as well as creating new occupations."
+        answer: 0,
+        why: "AI is allowing people to automate the simple tasks that are considered time wasters, allocating more time to the task that AI can not complete."
       },
       {
-        q: "\"AI is inherently bias free, since computers are not biased.\" This statement is:",
+        q: "Why can AI be biased?",
         options: [
-          "True, because computers cannot be biased",
-          "True, as long as the AI is given a specific data set",
-          "A myth, because AI refuses to use data created by humans",
-          "A myth, because AI is trained on data created by humans and can inherit and amplify our biases"
+          "Computers are never biased because they can’t think for themselves",
+          "It is trained on data created by humans, who inherently are biased",
+          "Bias only happens when tokens aren’t calculated properly",
+          "There is no bias"
         ],
-        answer: 3,
+        answer: 1,
         why: "Since AI is being trained on data created by humans, it can inherit and amplify the biases that we have."
       },
       {
-        q: "Where does AI \"creativity\" come from?",
+        q: "Where does AI’s “creativity” come from?",
         options: [
-          "Advanced pattern recognition across its vast amount of training data",
-          "Its own spark of creativity",
-          "A human's natural creativity",
-          "The speed at which it generates ideas"
+          "It has its own imagination",
+          "Its own personal experience from other users",
+          "From the internet",
+          "Pattern recognition from its training data set"
         ],
-        answer: 0,
-        why: "AI&rsquo;s &ldquo;creativity&rdquo; is a by-product of its advanced pattern recognition. It can create ideas quickly, but that doesn&rsquo;t mean that they are good."
+        answer: 3,
+        why: "AI’s “creativity” is a by-product of its advanced pattern recognition. It doesn’t have its own spark of creativity."
       },
       {
-        q: "\"AI doesn't need human oversight to operate.\" Which of these are humans actually responsible for?",
+        q: "Which is NOT a job humans do while overseeing AI?",
         options: [
-          "Nothing, because AI systems manage themselves",
-          "Only double checking spelling",
-          "Creating the data that it trains on, the design, monitoring errors, and managing the adoption/deployment of AI systems",
-          "Only turning the AI on and off"
+          "Create new data for AI to train on",
+          "Monitor AI for errors",
+          "Let AI run without checking its outputs",
+          "Managing how AI is deployed"
         ],
         answer: 2,
-        why: "Human oversight is necessary, and humans also have to double check outputs, since Module 2 showed AI can give completely wrong and sometimes harmful answers."
+        why: "Humans have to be able to double check the outputs, since AI can give completely wrong and sometimes harmful answers."
       }
     ]
   }
