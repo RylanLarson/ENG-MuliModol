@@ -20,13 +20,23 @@ const COURSE = [
         bullets: [
           "Your words are broken into tokens",
           "Each of those tokens are assigned to maps and assigned a statistical number of importance. That importance value is how the AI figures out its relation and what the possible meaning of the data is"
-        ]
+        ],
+        image: {
+          src: "TokensVisualization.png",
+          alt: "Flowchart showing the sentence 'The dog sat on the couch.' being standardized to lowercase, split into the tokens the, dog, sat, on, the, couch, turned into the index numbers 4, 22, 63, 7, 4, 143, and finally encoded as columns of ones and zeros.",
+          caption: "A sentence becoming tokens, then numbers the model can work with."
+        }
       },
       {
         heading: "Step 2: Predicting the Next Token",
         bullets: [
           "Given each token, the model calculates a probability for every possible next token. For example if you were to ask a model &ldquo;What is the capitol of Iowa?&rdquo; It processes every token within the prompt and will assign probability to every possible answer, with the highest probability being the output &ldquo;Des Moines.&rdquo;"
-        ]
+        ],
+        image: {
+          src: "PredictingNextToken.jpg",
+          alt: "Graphic titled 'How Do LLMs Generate Text?' The prompt 'The sky is' goes into an LLM, which scores possible next words: blue 48%, clear 24%, bright 11%. It picks 'blue'. Text generation is next-token prediction in a loop: score, select, repeat.",
+          caption: "The model scores every possible next word and picks the most likely one."
+        }
       },
       {
         heading: "Step 3: How LLM&rsquo;s actually became helpful",
@@ -113,14 +123,24 @@ const COURSE = [
           "The quality of your AI output depends on the description and complexity of the user's input. The more detail that you go into while prompting the AI helps you create a better and more concise output.",
           "Strong prompts may include but are not limited to: Specific design choices, the intended audience, key details or features that need to be included, and any key requirements that need to be met.",
           "The better that you are able to describe what you want, the better response that you will get. Learning how to prompt AI properly can seriously help you get the desired output, project design, or feature implementation."
-        ]
+        ],
+        image: {
+          src: "StrongPromptin.jpg",
+          alt: "Infographic titled 'Common Weak AI Prompts and How to Fix Them.' Weak prompts on the left: too vague ('A dog in a park'), contradictory details, too brief ('A futuristic car'), and overly complex. Better prompts on the right: be specific ('A golden retriever playing fetch in a sunny park'), remove inconsistencies, add description ('A sleek, futuristic sports car with neon lights on a rainy street'), and simplify the request. Tips: be clear, be consistent, be detailed.",
+          caption: "Weak prompts compared with stronger, more specific versions."
+        }
       },
       {
         heading: "Funny Example of False Outputs",
         bullets: [
           "Google's AI overview provided factually incorrect information to a user urging that eating rocks are vital sources of minerals and vitamins.",
           "New York City created an AI chatbot to help small businesses navigate the laws of the city. This chatbot advised a small restaurant to break the law. It stated that the restaurant could serve cheese that was eaten by a rodent that was in the kitchen. Obviously this is incorrect and the city's AI chatbot hallucinated and provided a completely wrong answer."
-        ]
+        ],
+        image: {
+          src: "RockExample.jpg",
+          alt: "A paper plate piled with smooth river rocks in shades of tan, gray, and red, served as if it were a meal.",
+          caption: "Dinner, according to Google&rsquo;s AI overview."
+        }
       },
       {
         heading: "A Simple Checking Routine",
@@ -195,6 +215,16 @@ const COURSE = [
   {
     title: "Realistic Concerns vs. Myths",
     goal: "Course Goal: separate realistic concerns from myths",
+    // Logos shown down the right side of this module
+    gallery: [
+      { src: "Claude.png", alt: "Claude logo (Anthropic)" },
+      { src: "OpenAijpg.jpg", alt: "OpenAI logo (ChatGPT)" },
+      { src: "Geminijpg.jpg", alt: "Google Gemini logo" },
+      { src: "Grok.png", alt: "Grok logo (xAI)" },
+      { src: "Perplexity.jpg", alt: "Perplexity logo" },
+      { src: "Meta.avif", alt: "Meta AI logo" },
+      { src: "AppleAi.webp", alt: "Apple Intelligence logo" }
+    ],
     sections: [
       {
         heading: "Two Extremes",
@@ -366,12 +396,29 @@ function showModule(index) {
   let html = "<h2>Module " + number + "</h2>";
   html += '<p class="goal">' + module.goal + "</p>";
 
+  // A module with a gallery puts its lesson text on the left and the pictures down the right.
+  if (module.gallery) {
+    html += '<div class="module-layout"><div class="module-main">';
+  }
+
   module.sections.forEach(function (section) {
-    html += "<h3>" + section.heading + "</h3><ul>";
-    section.bullets.forEach(function (text) {
-      html += "<li>" + text + "</li>";
+    let text = "<h3>" + section.heading + "</h3><ul>";
+    section.bullets.forEach(function (bullet) {
+      text += "<li>" + bullet + "</li>";
     });
-    html += "</ul>";
+    text += "</ul>";
+
+    // A section with an image shows the picture to the right of its heading and text.
+    if (section.image) {
+      html += '<div class="section-figure"><div>' + text + "</div>";
+      html += '<figure><img src="' + section.image.src + '" alt="' + section.image.alt.replace(/"/g, "&quot;") + '" loading="lazy">';
+      if (section.image.caption) {
+        html += "<figcaption>" + section.image.caption + "</figcaption>";
+      }
+      html += "</figure></div>";
+    } else {
+      html += text;
+    }
   });
 
   if (module.takeaways.length) {
@@ -380,6 +427,15 @@ function showModule(index) {
       html += "<li>" + item + "</li>";
     });
     html += "</ul></div>";
+  }
+
+  if (module.gallery) {
+    html += '</div><aside class="logo-rail" aria-label="Popular AI assistants">';
+    html += '<p class="logo-rail-title">AI tools you may have seen</p>';
+    module.gallery.forEach(function (logo) {
+      html += '<img src="' + logo.src + '" alt="' + logo.alt + '" loading="lazy">';
+    });
+    html += "</aside></div>";
   }
 
   html += '<div class="module-nav">';
@@ -580,6 +636,82 @@ function showGrades() {
   }
 }
 
+// ---------- Home page: Canvas-style To Do list ----------
+
+const DUE_DATE = "Fri, Nov 20 at 11:59pm";
+
+// Which to-do items the student has checked off (remembered in this browser only).
+function loadTodos() {
+  try {
+    return JSON.parse(localStorage.getItem("aiLiteracyTodos")) || {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveTodos(done) {
+  try {
+    localStorage.setItem("aiLiteracyTodos", JSON.stringify(done));
+  } catch (error) {
+    // Storage is unavailable; checkboxes still work until the page is closed.
+  }
+}
+
+function showTodos() {
+  const list = document.getElementById("todo-list");
+  const count = document.getElementById("todo-count");
+  const done = loadTodos();
+
+  // One module and one quiz per lesson, in the order they should be done.
+  const items = [];
+  COURSE.forEach(function (module, index) {
+    const number = index + 1;
+    items.push({ id: "module-" + number, kind: "Module", title: "Module " + number + ": " + module.title, href: "modules.html#module-" + number });
+    items.push({ id: "quiz-" + number, kind: "Quiz", title: "Quiz " + number + ": " + module.title, href: "quizzes.html#quiz-" + number });
+  });
+
+  function updateCount() {
+    const finished = items.filter(function (item) { return done[item.id]; }).length;
+    count.textContent = finished === items.length
+      ? "All caught up! 🎉"
+      : finished + " of " + items.length + " complete";
+  }
+
+  list.innerHTML = "";
+  items.forEach(function (item) {
+    const li = document.createElement("li");
+    li.className = "todo-item" + (done[item.id] ? " done" : "");
+
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.id = "todo-" + item.id;
+    box.checked = !!done[item.id];
+    box.setAttribute("aria-label", "Mark " + item.title + " as complete");
+    box.addEventListener("change", function () {
+      if (box.checked) {
+        done[item.id] = true;
+      } else {
+        delete done[item.id];
+      }
+      saveTodos(done);
+      li.classList.toggle("done", box.checked);
+      updateCount();
+    });
+
+    const body = document.createElement("div");
+    body.innerHTML =
+      '<span class="todo-kind ' + item.kind.toLowerCase() + '">' + item.kind + "</span>" +
+      '<a href="' + item.href + '">' + item.title + "</a>" +
+      '<span class="todo-due">Due ' + DUE_DATE + "</span>";
+
+    li.appendChild(box);
+    li.appendChild(body);
+    list.appendChild(li);
+  });
+
+  updateCount();
+}
+
 // ---------- Page-flip animation for the sidebar tabs ----------
 
 // The file name of a page, e.g. "syllabus.html" ("" or "/" counts as the home page).
@@ -645,6 +777,10 @@ if (document.getElementById("module-panel")) {
 
 if (document.getElementById("grades-panel")) {
   showGrades();
+}
+
+if (document.getElementById("todo-list")) {
+  showTodos();
 }
 
 if (document.getElementById("quiz-panel")) {
