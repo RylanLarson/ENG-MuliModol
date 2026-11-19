@@ -229,7 +229,7 @@ const COURSE = [
       {
         heading: "Two Extremes",
         bullets: [
-          "No matter the topic, people will take extreme positions and AI is not an exception. There are people that completely avoid AI out of fear and feel as if there are no benefits to it, while the other side swears by the tool and uses AI in every aspect of their life. The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.). Some of those concerns can be understandable while some stem from myths surrounding AI."
+          "No matter the topic, people will take extreme positions and AI is not an exception. There are people that completely avoid AI out of fear and feel as if there are no benefits to it, while the other side swears by the tool and uses AI in every aspect of their life. The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al., “How Americans View”). Some of those concerns can be understandable while some stem from myths surrounding AI."
         ]
       },
       {
@@ -277,7 +277,7 @@ const COURSE = [
           "Everyone uses AI in their daily life"
         ],
         answer: 2,
-        why: "The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al.)."
+        why: "The Pew Research Center found that 50% of Americans are more concerned than excited about the growing use of AI (Kennedy et al., “How Americans View”)."
       },
       {
         q: "“AI is on the verge of automating all jobs.” What is a more accurate statement?",
